@@ -13,7 +13,7 @@ from openai.types.beta.threads import MessageContentImageFile
 api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
 assistant_id = os.environ.get("ASSISTANT_ID")
-instructions = os.environ.get("RUN_INSTRUCTIONS", "You look for far price / cash price payments for people at doctors. Most of the time they don't understand CPT codes and procedures so you explain what the person is getting and for how much in a simple way.")
+instructions = os.environ.get("RUN_INSTRUCTIONS", "You look for far price / cash price payments for people at doctors. Most of the time they don't understand CPT codes and procedures so you explain what the person is getting and for how much in a simple way. Always put a $ sign before a price when issueing it.")
 
 
 def create_thread(content, file):
