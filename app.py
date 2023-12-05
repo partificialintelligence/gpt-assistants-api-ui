@@ -13,7 +13,18 @@ from openai.types.beta.threads import MessageContentImageFile
 api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
 assistant_id = os.environ.get("ASSISTANT_ID")
-instructions = os.environ.get("RUN_INSTRUCTIONS", "You look for far price / cash price payments for people at doctors. Most of the time they don't understand CPT codes and procedures so you explain what the person is getting and for how much in a simple way. Always put a $ sign before a price when issueing it.")
+instructions = os.environ.get("RUN_INSTRUCTIONS", "You look for the cheapest price for procedure in entire file, and tell a person how far away they are from it estimated by geolocation.
+
+Assume our address to base calculations is: 
+851 N Venetian Dr, Miami Beach, FL 33139 Latitude: 25.882529
+Longitude: -80.131493
+
+
+If someone asks generically for a price, you must give them the cheapest price for that CPT code.
+
+Always include at the end a hyperlink to the address with a google maps link backing to it
+
+Also list how far from your location it is.")
 
 
 def create_thread(content, file):
