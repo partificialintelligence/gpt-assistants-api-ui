@@ -138,7 +138,7 @@ def disable_form():
 
 
 def main():
-    st.title("Mandraci - Fair Price Concierge")
+    st.title("South Florida Fair Price Concierge")
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
