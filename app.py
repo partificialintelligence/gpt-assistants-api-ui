@@ -164,8 +164,13 @@ def disable_form():
 
 
 def main():
-    logo = Image.open('logo.jpeg')
-    st.title("Self Pay Price 0.1.8)")
+    st.title("Self Pay Price 0.1.8")
+    logo_path = 'logo.jpeg'
+    if os.path.exists(logo_path):
+        logo = Image.open(logo_path)
+        st.image(logo, width=150)  # Adjust width as needed
+    else:
+        st.error("Logo file not found!")
 
     # Create a two-column layout
     col1, col2 = st.columns(2)
