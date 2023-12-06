@@ -28,6 +28,14 @@ Always include at the end a hyperlink to the address with a google maps link bac
 Also list how far from your location it is.
 """)
 
+def preset_prompt_handler(preset_prompt):
+    if preset_prompt:
+        response = get_response(preset_prompt, None)
+        st.session_state.chat_log.append({"name": "user", "msg": preset_prompt})
+        st.session_state.chat_log.append({"name": "assistant", "msg": response})
+        st.session_state.in_progress = False
+        st.rerun()
+
 
 def create_thread(content, file):
     messages = [
@@ -151,7 +159,16 @@ def disable_form():
 
 
 def main():
-    st.title("Self-Pay Pricing Concierge (South FL Demo)")
+    st.title("Self-Pay Pricing Concierge (South FL Demo 0.1.3)")
+
+    # Pre-set prompt buttons
+    if st.button("Cheapest brain scan in Tampa Bay"):
+        preset_prompt_handler("Hey, where's the cheapest place to get a brain scan (MRI) around Tampa Bay?")
+    if st.button("Good deal on neck MRI in Orlando"):
+        preset_prompt_handler("I'm looking for a good deal on a neck MRI close to Orlando. Any suggestions?")
+    if st.button("Best price for mammo in Miami"):
+        preset_prompt_handler("Need the best price for a mammo (breast scan) in Miami. Where should I go?")
+
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
