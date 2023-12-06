@@ -172,10 +172,10 @@ def main():
     if os.path.exists(logo_path):
         with col:
             logo = Image.open(logo_path)
-            st.image(logo, width=75)  # Adjust width as needed
+            st.image(logo, width=150)  # Adjust width as needed
 
             # Display the title below the logo with smaller font size
-            st.markdown("<h1 style='text-align: center; font-size: 50%;'>Self Pay Price 0.1.8</h1>", unsafe_allow_html=True)
+            st.markdown("<h1 style='text-align: center; font-size: 50%;'>Self Pay Price 0.1.9</h1>", unsafe_allow_html=True)
     else:
         st.error("Logo file not found!")
 
