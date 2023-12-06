@@ -175,7 +175,7 @@ def main():
             st.image(logo, width=150)  # Adjust width as needed
 
             # Display the title below the logo with smaller font size
-            st.markdown("<h1 style='text-align: center; font-size: 50%;'>Self Pay Price 0.1.9</h1>", unsafe_allow_html=True)
+            st.markdown("<h1 font-size: 100%;'>Hospital 0.1.9</h1>", unsafe_allow_html=True)
     else:
         st.error("Logo file not found!")
 
