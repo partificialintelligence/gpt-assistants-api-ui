@@ -159,29 +159,37 @@ def disable_form():
 
 
 def main():
-    st.title("Self-Pay Pricing Concierge (South FL Demo 0.1.4)")
+    st.title("Self-Pay Pricing Concierge (South FL Demo 0.1.5)")
 
-    # Pre-set prompt buttons for various medical services in Florida
-    if st.button("Cheapest brain scan in Tampa Bay"):
-        preset_prompt_handler("Hey, where's the cheapest place to get a brain scan (MRI) around Tampa Bay?")
-    if st.button("Good deal on neck MRI in Orlando"):
-        preset_prompt_handler("I'm looking for a good deal on a neck MRI close to Orlando. Any suggestions?")
-    if st.button("Best price for mammo in Miami"):
-        preset_prompt_handler("Need the best price for a mammo (breast scan) in Miami. Where should I go?")
-    if st.button("Affordable heart checkup in Gainesville"):
-        preset_prompt_handler("Who's got the best price on a heart checkup (EKG) in Gainesville?")
-    if st.button("Budget-friendly doctor in Jacksonville"):
-        preset_prompt_handler("First time going to a doc in Jacksonville. Where can I get a check-up without breaking the bank?")
-    if st.button("Affordable heart stress test in Sarasota"):
-        preset_prompt_handler("Looking for an affordable heart stress test in Sarasota. Any recommendations?")
-    if st.button("Economical psych evaluation in Lakeland"):
-        preset_prompt_handler("Need a psych evaluation in Lakeland that won't cost a fortune. Where to?")
-    if st.button("Cheap chest MRI in Fort Myers"):
-        preset_prompt_handler("Who does cheap chest MRIs in the Fort Myers area? Need one without the dye stuff.")
-    if st.button("Emergency room with lower cost in South Florida"):
-        preset_prompt_handler("In South Florida and need the ER. Which place won’t charge me an arm and a leg?")
-    if st.button("Cost-effective follow-up visit in Tampa"):
-        preset_prompt_handler("Where's the best place for a follow-up doc visit in Tampa without spending too much?")
+    # Create a two-column layout
+    col1, col2 = st.columns(2)
+
+    with col1:
+        # Place half of the buttons in the first column
+        if st.button("Cheapest brain scan in Tampa Bay"):
+            preset_prompt_handler("Hey, where's the cheapest place to get a brain scan (MRI) around Tampa Bay?")
+        if st.button("Good deal on neck MRI in Orlando"):
+            preset_prompt_handler("I'm looking for a good deal on a neck MRI close to Orlando. Any suggestions?")
+        if st.button("Best price for mammo in Miami"):
+            preset_prompt_handler("Need the best price for a mammo (breast scan) in Miami. Where should I go?")
+        if st.button("Affordable heart checkup in Gainesville"):
+            preset_prompt_handler("Who's got the best price on a heart checkup (EKG) in Gainesville?")
+        if st.button("Budget-friendly doctor in Jacksonville"):
+            preset_prompt_handler("First time going to a doc in Jacksonville. Where can I get a check-up without breaking the bank?")
+
+    with col2:
+        # Place the remaining buttons in the second column
+        if st.button("Affordable heart stress test in Sarasota"):
+            preset_prompt_handler("Looking for an affordable heart stress test in Sarasota. Any recommendations?")
+        if st.button("Economical psych evaluation in Lakeland"):
+            preset_prompt_handler("Need a psych evaluation in Lakeland that won't cost a fortune. Where to?")
+        if st.button("Cheap chest MRI in Fort Myers"):
+            preset_prompt_handler("Who does cheap chest MRIs in the Fort Myers area? Need one without the dye stuff.")
+        if st.button("Emergency room with lower cost in South Florida"):
+            preset_prompt_handler("In South Florida and need the ER. Which place won’t charge me an arm and a leg?")
+        if st.button("Cost-effective follow-up visit in Tampa"):
+            preset_prompt_handler("Where's the best place for a follow-up doc visit in Tampa without spending too much?")
+
 
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
