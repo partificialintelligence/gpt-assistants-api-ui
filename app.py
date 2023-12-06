@@ -7,6 +7,7 @@ import re
 import streamlit as st
 import openai
 from openai.types.beta.threads import MessageContentImageFile
+from PIL import Image
 
 
 # OpenAI APIキーの設定
@@ -163,7 +164,8 @@ def disable_form():
 
 
 def main():
-    st.title("Self Pay Price (South FL Demo 0.1.7)")
+    logo = Image.open('logo.jpeg')
+    st.title("Self Pay Price 0.1.8)")
 
     # Create a two-column layout
     col1, col2 = st.columns(2)
