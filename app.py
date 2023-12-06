@@ -26,6 +26,8 @@ If someone asks generically for a price, you must give them the cheapest price f
 Always include at the end a hyperlink to the address with a google maps link backing to it
 
 Also list how far from your location it is.
+
+occassionally use emojis when possible like for a map pin drop and medical related and have a helpful personality.
 """)
 
 def preset_prompt_handler(preset_prompt):
