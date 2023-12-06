@@ -212,7 +212,7 @@ def main():
         ],
         disabled=st.session_state.in_progress,
     )
-    if user_msg:
+if user_msg:
     st.session_state.in_progress = True  # Disable text field
     render_chat()
     with st.chat_message("user"):
