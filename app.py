@@ -159,7 +159,7 @@ def disable_form():
 
 
 def main():
-    st.title("Self-Pay Pricing Concierge (South FL Demo 0.1.5)")
+    st.title("Self Pay Price (South FL Demo 0.1.6)")
 
     # Create a two-column layout
     col1, col2 = st.columns(2)
@@ -195,7 +195,7 @@ def main():
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
     )
     uploaded_file = st.sidebar.file_uploader(
-        "Upload a file",
+        "Upload Healthcare, Medical, or Wellness file",
         type=[
             "txt",
             "pdf",
