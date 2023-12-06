@@ -168,7 +168,7 @@ def main():
     col = st.columns([1, 2, 1])[1]
 
     # Load and display the logo
-    logo_path = 'logo.jpeg'
+    logo_path = 'logo.png'
     if os.path.exists(logo_path):
         with col:
             logo = Image.open(logo_path)
