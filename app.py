@@ -176,7 +176,7 @@ def main():
             st.image(logo, width=75, use_column_width=True)
 
             # Center the title using HTML and CSS
-            st.markdown("<h1 style='text-align: center;'>Florida Hospital Prices 0.2.0</h1>", unsafe_allow_html=True)
+            st.markdown("<h2 style='text-align: center;'>Florida Hospital Prices 0.1.6</h2>", unsafe_allow_html=True)
     else:
         st.error("Logo file not found!")
 
