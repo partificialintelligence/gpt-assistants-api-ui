@@ -173,7 +173,7 @@ def main():
         with col:
             logo = Image.open(logo_path)
             # Center the logo
-            st.image(logo, width=150, use_column_width=True)
+            st.image(logo, width=75, use_column_width=True)
 
             # Center the title using HTML and CSS
             st.markdown("<h1 style='text-align: center;'>Florida Hospital Prices 0.2.0</h1>", unsafe_allow_html=True)
