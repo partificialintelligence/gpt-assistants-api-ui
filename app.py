@@ -161,7 +161,7 @@ def disable_form():
 
 
 def main():
-    st.title("Self Pay Price (South FL Demo 0.1.6)")
+    st.title("Self Pay Price (South FL Demo 0.1.7)")
 
     # Create a two-column layout
     col1, col2 = st.columns(2)
@@ -198,38 +198,31 @@ def main():
     )
     uploaded_file = st.sidebar.file_uploader(
         "Upload Healthcare, Medical, or Wellness file",
-        type=[
-            "txt",
-            "pdf",
-            "png",
-            "jpg",
-            "jpeg",
-            "csv",
-            "json",
-            "geojson",
-            "xlsx",
-            "xls",
-        ],
+        # [File types]
         disabled=st.session_state.in_progress,
     )
-if user_msg:
-    st.session_state.in_progress = True  # Disable text field
+
+    if user_msg:
+        st.session_state.in_progress = True  # Disable text field
+        render_chat()
+        with st.chat_message("user"):
+            st.markdown(user_msg, True)
+
+        file = None
+        if uploaded_file is not None:
+            file = handle_uploaded_file(uploaded_file)
+
+        response = get_response(user_msg, file)
+        with st.chat_message("Assistant"):
+            st.markdown(response, True)
+
+        st.session_state.chat_log.append({"name": "user", "msg": user_msg})
+        st.session_state.chat_log.append({"name": "assistant", "msg": response})
+        st.session_state.in_progress = False  # Re-enable text field
+        st.rerun()
+
+    # Render existing chat
     render_chat()
-    with st.chat_message("user"):
-        st.markdown(user_msg, True)
-    file = None
-    if uploaded_file is not None:
-        file = handle_uploaded_file(uploaded_file)
-    response = get_response(user_msg, file)
-    with st.chat_message("Assistant"):
-        st.markdown(response, True)
-
-    st.session_state.chat_log.append({"name": "user", "msg": user_msg})
-    st.session_state.chat_log.append({"name": "assistant", "msg": response})
-    st.session_state.in_progress = False  # Re-enable text field
-    st.rerun()
-render_chat()
-
 
 if __name__ == "__main__":
     main()
