@@ -10,7 +10,7 @@ from openai.types.beta.threads import MessageContentImageFile
 from PIL import Image
 
 
-# OpenAI APIキーの設定
+# OpenAI API
 api_key = os.environ.get("OPENAI_API_KEY")
 client = openai.OpenAI(api_key=api_key)
 assistant_id = os.environ.get("ASSISTANT_ID")
@@ -174,8 +174,8 @@ def main():
             logo = Image.open(logo_path)
             st.image(logo, width=150)  # Adjust width as needed
 
-            # Display the title below the logo
-            st.title("Self Pay Price 0.1.8")
+            # Display the title below the logo with smaller font size
+            st.markdown("<h2 style='text-align: center; font-size: 50%;'>Self Pay Price 0.1.8</h2>", unsafe_allow_html=True)
     else:
         st.error("Logo file not found!")
 
