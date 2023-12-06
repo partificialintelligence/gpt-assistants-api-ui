@@ -164,7 +164,7 @@ def disable_form():
 
 
 def main():
-    # Create a single-column layout to center the logo
+    # Create a single-column layout
     col = st.columns([1, 2, 1])[1]
 
     # Load and display the logo
@@ -172,10 +172,11 @@ def main():
     if os.path.exists(logo_path):
         with col:
             logo = Image.open(logo_path)
-            st.image(logo, width=150)  # Adjust width as needed
+            # Center the logo
+            st.image(logo, width=150, use_column_width=True)
 
-            # Display the title below the logo with smaller font size
-            st.markdown("<h1 font-size: 100%;'>Hospital 0.1.9</h1>", unsafe_allow_html=True)
+            # Center the title using HTML and CSS
+            st.markdown("<h1 style='text-align: center;'>Florida Hospital Prices 0.2.0</h1>", unsafe_allow_html=True)
     else:
         st.error("Logo file not found!")
 
