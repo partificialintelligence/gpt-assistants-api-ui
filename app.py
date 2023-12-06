@@ -164,11 +164,18 @@ def disable_form():
 
 
 def main():
-    st.title("Self Pay Price 0.1.8")
+    # Create a single-column layout to center the logo
+    col = st.columns([1, 2, 1])[1]
+
+    # Load and display the logo
     logo_path = 'logo.jpeg'
     if os.path.exists(logo_path):
-        logo = Image.open(logo_path)
-        st.image(logo, width=150)  # Adjust width as needed
+        with col:
+            logo = Image.open(logo_path)
+            st.image(logo, width=150)  # Adjust width as needed
+
+            # Display the title below the logo
+            st.title("Self Pay Price 0.1.8")
     else:
         st.error("Logo file not found!")
 
