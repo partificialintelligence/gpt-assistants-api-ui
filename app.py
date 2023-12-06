@@ -30,11 +30,13 @@ Also list how far from your location it is.
 
 def preset_prompt_handler(preset_prompt):
     if preset_prompt:
+        st.session_state.in_progress = True  # Disable text field
         response = get_response(preset_prompt, None)
         st.session_state.chat_log.append({"name": "user", "msg": preset_prompt})
         st.session_state.chat_log.append({"name": "assistant", "msg": response})
-        st.session_state.in_progress = False
+        st.session_state.in_progress = False  # Re-enable text field
         st.rerun()
+
 
 
 def create_thread(content, file):
@@ -211,21 +213,22 @@ def main():
         disabled=st.session_state.in_progress,
     )
     if user_msg:
-        render_chat()
-        with st.chat_message("user"):
-            st.markdown(user_msg, True)
-        file = None
-        if uploaded_file is not None:
-            file = handle_uploaded_file(uploaded_file)
-        response = get_response(user_msg, file)
-        with st.chat_message("Assistant"):
-            st.markdown(response, True)
-
-        st.session_state.chat_log.append({"name": "user", "msg": user_msg})
-        st.session_state.chat_log.append({"name": "assistant", "msg": response})
-        st.session_state.in_progress = False
-        st.rerun()
+    st.session_state.in_progress = True  # Disable text field
     render_chat()
+    with st.chat_message("user"):
+        st.markdown(user_msg, True)
+    file = None
+    if uploaded_file is not None:
+        file = handle_uploaded_file(uploaded_file)
+    response = get_response(user_msg, file)
+    with st.chat_message("Assistant"):
+        st.markdown(response, True)
+
+    st.session_state.chat_log.append({"name": "user", "msg": user_msg})
+    st.session_state.chat_log.append({"name": "assistant", "msg": response})
+    st.session_state.in_progress = False  # Re-enable text field
+    st.rerun()
+render_chat()
 
 
 if __name__ == "__main__":
