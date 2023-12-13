@@ -192,7 +192,7 @@ def main():
         if st.button("Best price for mammo in Miami"):
             preset_prompt_handler("Need the best price for a mammo (breast scan) in Miami. Where should I go?")
         if st.button("Affordable heart checkup in Gainesville"):
-
+            preset_prompt_handler("Who's got the best price on a heart checkup (EKG) in Gainesville?")
 
     user_msg = st.chat_input(
         "Message", on_submit=disable_form, disabled=st.session_state.in_progress
